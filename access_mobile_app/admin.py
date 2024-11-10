@@ -1,5 +1,9 @@
 from django.contrib import admin
-from access_mobile_app.models import example_model
+from .models import DonorAccount, DoneeAccount, Sponsorship
 
-# Register your models here.
-admin.site.register(example_model)
+class DonorAccountAdmin(admin.ModelAdmin):
+    list_display = ('email', 'name', 'is_active', 'is_staff', 'date_joined')
+
+admin.site.register(DonorAccount, DonorAccountAdmin)
+admin.site.register(DoneeAccount)
+admin.site.register(Sponsorship)
