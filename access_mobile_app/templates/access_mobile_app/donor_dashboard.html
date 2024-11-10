@@ -2,26 +2,39 @@
 {% extends 'access_mobile_app/access_mobile.html' %}
 
 {% block content %}
-<h1>Donor Dashboard</h1>
-
-<div style="display: grid; grid-template-columns: auto auto; gap: 10px; text-align: left;">
-    <div><strong>Name:</strong></div>
-    <div>{{ donor.name }}</div>
-    
-    <div><strong>Email:</strong></div>
-    <div>{{ donor.email }}</div>
-    
-    <div><strong>Bio:</strong></div>
-    <div>{{ donor.bio }}</div>
-    
-    <div><strong>Total Sponsorships:</strong></div>
-    <div>{{ sponsorship_count }}</div>
-</div>
-
-<br>
-
-<button onclick="window.location.href='{% url 'edit_donor_info' %}'">Edit Profile</button>
-<button onclick="window.location.href='{% url 'view_donees' %}'">View Donees</button>
-<button onclick="window.location.href='{% url 'order_sim' %}'">Order a SIM</button>
-<button onclick="window.location.href='{% url 'donate_phone' %}'">Donate a Phone</button>
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Donor Dashboard</h1>
+                    <div class="mt-4">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex justify-content-between">
+                                <strong>Name:</strong>
+                                <span>{{ donor.name }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <strong>Email:</strong>
+                                <span>{{ donor.email }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <strong>Bio:</strong>
+                                <span>{{ donor.bio }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <strong>Total Sponsorships:</strong>
+                                <span>{{ sponsorship_count }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-section mt-4">
+                        <button class="btn btn-primary" onclick="window.location.href='{% url 'edit_donor_info' %}'">Edit Profile</button>
+                        <button class="btn btn-outline-primary" onclick="window.location.href='{% url 'view_donees' %}'">View Donees</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='{% url 'order_sim' %}'">Order a SIM</button>
+                        <button class="btn btn-light" onclick="window.location.href='{% url 'donate_phone' %}'">Donate a Phone</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
