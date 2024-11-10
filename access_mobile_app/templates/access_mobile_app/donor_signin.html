@@ -3,7 +3,12 @@
 
 {% block content %}
 <h1>Donor Sign In</h1>
-<p>Select an option:</p>
-<button onclick="window.location.href='{% url 'donor_login' %}'">Log In</button>
-<button onclick="window.location.href='{% url 'donor_signup' %}'">Sign Up</button>
+<div class="row">
+    <div class="col">
+        <p>Select an option:</p>
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'donor_signup' %}'">Sign Up</button>
+        <button class="btn btn-outline-primary" onclick="window.location.href='{% url 'donor_login' %}'">Log In</button>
+        <a href="/" class="btn btn-light">Back to Home</a>
+    </div>
+</div>
 {% endblock %}
