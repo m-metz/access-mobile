@@ -15,17 +15,20 @@ def donatee_signin(request):
 def donor_signin(request):
     return render(request, 'access_mobile_app/donor_signin.html')
 
-def access_mobile_view(request):
-    return render(request, 'access_mobile.html')
+def access_mobile(request):
+    return render(request, 'access_mobile_app/access_mobile.html')
 
-def donee_view(request):
-    return render(request, 'donee.html')
+def donee(request):
+    return render(request, 'access_mobile_app/donee.html')
 
-def donee_dashboard_view(request):
-    return render(request, 'donee_dashboard.html')
+def donee_dashboard(request):
+    return render(request, 'access_mobile_app/donee_dashboard.html')
 
-def edit_profile_view(request):
-    return render(request, 'edit_profile.html')
+def edit_profile(request):
+    return render(request, 'access_mobile_app/edit_profile.html')
 
-def sign_up_view(request):
-    return render(request, 'sign_up.html')
+def sign_up(request):
+    return render(request, 'access_mobile_app/sign_up.html')
+
+def donor(request):
+    return render(request, 'access_mobile_app/donor.html')
