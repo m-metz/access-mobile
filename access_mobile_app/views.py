@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.timezone import datetime
-from .models import DoneeAccount, Sponsorship, DonorAccount
+from .models import DoneeAccount, Sponsorship, DonorAccount, DonorAccountManager
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from .forms import DoneeEditForm
 
 # from django.shortcuts import render, redirect
@@ -61,6 +63,36 @@ def edit_donee_info(request, sim):
         form = DoneeEditForm(instance=donee)
     
     return render(request, 'access_mobile_app/edit_donee_info.html', {'form': form, 'donee': donee})
+
+def donor_login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('donor_dashboard')
+        else:
+            return render(request, 'access_mobile_app/donor_login.html', {'error': 'Invalid credentials'})
+
+    return render(request, 'access_mobile_app/donor_login.html')
+
+def donor_signup(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        name = request.POST.get('name')
+        if DonorAccount.objects.filter(email=email).exists():
+            return render(request, 'access_mobile_app/donor_signup.html', {'error': 'Email already in use'})
+        
+        user = DonorAccount.objects.create_user(email=email, password=password, name=name)
+        login(request, user)
+        return redirect('donor_dashboard')
+
+    return render(request, 'access_mobile_app/donor_signup.html')
+
+def donor_dashboard(request):
+    return render(request, 'access_mobile_app/donor_dashboard.html')
 
 def edit_profile(request):
     return render(request, 'access_mobile_app/edit_profile.html')
