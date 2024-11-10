@@ -1,14 +1,10 @@
-<!-- donatee_signin.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donatee Sign In</title>
-</head>
-<body>
-    <h1>Donatee Sign In</h1>
-    <p>This is the page where donatees can sign in.</p>
-    <button onclick="window.location.href='/'">Go Back to Landing Page</button>
-</body>
-</html>
+{% extends 'access_mobile_app/access_mobile.html' %}
+
+{% block title %}Donee Sign In{% endblock %}
+
+{% block heading %}Donee Sign In{% endblock %}
+
+{% block buttons %}
+<a href="/donee-signin/" class="btn">Sign In as Donee</a>
+<a href="/" class="btn">Back to Home</a>
+{% endblock %}
