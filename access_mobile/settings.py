@@ -9,8 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 
-Don't forget to create a .env file in the repo directory and add the following
-variables. SECRET_KEY can stay blank for non-prod environments.
+.env file Environment variables to customize for your non-prod environment.
 
 SECRET_KEY=django-insecure-zkz8k(pxe8r__*2w0!ybvmkw%5w%p)i-362$k6kclik97kcy7(
 DB_NAME=amobile
