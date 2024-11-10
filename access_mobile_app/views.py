@@ -15,9 +15,6 @@ def donatee_signin(request):
 def donor_signin(request):
     return render(request, 'access_mobile_app/donor_signin.html')
 
-def access_mobile(request):
-    return render(request, 'access_mobile_app/access_mobile.html')
-
 def donee(request):
     return render(request, 'access_mobile_app/donee.html')
 
