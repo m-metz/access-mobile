@@ -144,11 +144,6 @@ def order_sim(request):
 def donate_phone(request):
     return render(request, 'access_mobile_app/donate_phone.html')
 
-
-def donor_donees(request):
-    donees = DoneeAccount.objects.all()[:3]  # Get the first three donees
-    return render(request, 'access_mobile_app/donor_donees.html', {'donees': donees})
-
 def edit_profile(request):
     return render(request, 'access_mobile_app/edit_profile.html')
 
