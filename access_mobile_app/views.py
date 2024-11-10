@@ -4,6 +4,7 @@ from .models import DoneeAccount, Sponsorship, DonorAccount, DonorAccountManager
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .forms import DoneeEditForm
+from .models import DoneeAccount
 
 # from django.shortcuts import render, redirect
 # from django.contrib.auth import login, authenticate
@@ -93,6 +94,10 @@ def donor_signup(request):
 
 def donor_dashboard(request):
     return render(request, 'access_mobile_app/donor_dashboard.html')
+
+def donor_donees(request):
+    donees = DoneeAccount.objects.all()[:3]  # Get the first three donees
+    return render(request, 'access_mobile_app/donor_donees.html', {'donees': donees})
 
 def edit_profile(request):
     return render(request, 'access_mobile_app/edit_profile.html')

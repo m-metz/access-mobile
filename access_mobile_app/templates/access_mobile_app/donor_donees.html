@@ -1,0 +1,19 @@
+{% extends 'access_mobile_app/access_mobile.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        {% for donee in donees %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ donee.name }}</h5>
+                    <p class="card-text">{{ donee.bio }}</p>
+                    <a href="{% url 'manage_donee' donee.SIMCard %}" class="btn btn-primary">Manage</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

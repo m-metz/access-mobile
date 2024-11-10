@@ -9,6 +9,7 @@ urlpatterns = [
     path('donee-dashboard/<str:sim>', views.donee_dashboard, name='donee_dashboard'),
     path('donee-dashboard/<str:sim>/edit/', views.edit_donee_info, name='edit_donee_info'),
     path('donor/', views.donor, name='donor'),
+    path('donor-donees/', views.donor_donees, name='donor_donees'),
     path('donor-signin/', views.donor_signin, name='donor_signin'),
     path('donor-login/', views.donor_login, name='donor_login'),
     path('donor-signup/', views.donor_signup, name='donor_signup'),
