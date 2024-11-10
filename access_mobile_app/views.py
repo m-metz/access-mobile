@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.timezone import datetime
 from .models import DoneeAccount, Sponsorship, DonorAccount, DonorAccountManager
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from .forms import DoneeEditForm
+from .forms import DoneeEditForm, DonorProfileForm
 
 # from django.shortcuts import render, redirect
 # from django.contrib.auth import login, authenticate
@@ -91,8 +92,42 @@ def donor_signup(request):
 
     return render(request, 'access_mobile_app/donor_signup.html')
 
+@login_required
 def donor_dashboard(request):
-    return render(request, 'access_mobile_app/donor_dashboard.html')
+    donor = request.user  # Gets the currently logged-in user
+    sponsorship_count = Sponsorship.objects.filter(donor_account=donor).count()  # Count sponsorships
+
+    context = {
+        'donor': donor,
+        'sponsorship_count': sponsorship_count,
+    }
+    return render(request, 'access_mobile_app/donor_dashboard.html', context)
+
+@login_required
+def edit_donor_info(request):
+    donor = request.user  # Get the currently authenticated donor
+    if request.method == 'POST':
+        form = DonorProfileForm(request.POST, instance=donor)
+        if form.is_valid():
+            form.save()
+            return redirect('donor_dashboard')  # Redirect to the donor dashboard after saving
+    else:
+        form = DonorProfileForm(instance=donor)  # Prepopulate the form with current donor data
+
+    return render(request, 'access_mobile_app/edit_donor_info.html', {'form': form})
+
+@login_required
+def view_donees(request):
+    return render(request, 'access_mobile_app/view_donees.html')
+
+@login_required
+def order_sim(request):
+    return render(request, 'access_mobile_app/order_sim.html')
+
+@login_required
+def donate_phone(request):
+    return render(request, 'access_mobile_app/donate_phone.html')
+
 
 def edit_profile(request):
     return render(request, 'access_mobile_app/edit_profile.html')
