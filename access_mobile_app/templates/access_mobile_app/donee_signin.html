@@ -1,0 +1,17 @@
+<!-- donee_signin.html -->
+{% extends 'access_mobile_app/access_mobile.html' %}
+
+{% block content %}
+    <h1>Donee Sign-In</h1>
+    <p>Please enter your SIM to sign in.</p>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="sim" placeholder="Enter SIM" required>
+        <button type="submit">Confirm</button>
+    </form>
+{% endblock %}
