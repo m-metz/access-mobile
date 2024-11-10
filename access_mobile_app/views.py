@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.db.models import Sum
 from .forms import DoneeEditForm, DonorProfileForm
+from .models import DoneeAccount
 
 # from django.shortcuts import render, redirect
 # from django.contrib.auth import login, authenticate
@@ -142,7 +143,6 @@ def order_sim(request):
 @login_required
 def donate_phone(request):
     return render(request, 'access_mobile_app/donate_phone.html')
-
 
 def edit_profile(request):
     return render(request, 'access_mobile_app/edit_profile.html')

@@ -30,6 +30,7 @@
                     <div class="button-section mt-4">
                         <button class="btn btn-primary" onclick="window.location.href='{% url 'edit_donor_info' %}'">Edit Profile</button>
                         <button class="btn btn-outline-primary" onclick="window.location.href='{% url 'view_donees' %}'">View Donees</button>
+                        <a href="{% url 'donor_donees' %}" class="btn btn-primary">Manage Donees</a>
                         <button class="btn btn-secondary" onclick="window.location.href='{% url 'order_sim' %}'">Order a SIM</button>
                         <button class="btn btn-light" onclick="window.location.href='{% url 'donate_phone' %}'">Donate a Phone</button>
                     </div>
