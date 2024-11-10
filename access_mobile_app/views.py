@@ -163,6 +163,23 @@ def pay_sim(request):
     return render(request, 'access_mobile_app/pay_sim.html')
 
 def register_sim(request):
+
+    try:
+        donee = DoneeAccount.objects.create(
+            sim='0000',  # Pre-baked SIM value
+            name="User",  # Name "User"
+            bio="User Profile"  # Bio "User Profile"
+        )
+
+        # Create a new Sponsorship entry linking the authenticated user and the new Donee
+        Sponsorship.objects.create(
+            donor_account=request.user,  # Link to the authenticated user
+            donee_account=donee,  # Link to the new donee
+            balance=10  # Set the balance to 10
+        )
+    except:
+        pass
+
     return render(request, 'access_mobile_app/register_sim.html')
 
 def charity_finder(request):
