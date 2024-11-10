@@ -1,0 +1,77 @@
+{# donee.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        background-color: #222;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        background-color: #333;
+        padding: 40px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .box h2 {
+        margin-bottom: 20px;
+    }
+
+    .input {
+        margin-bottom: 20px;
+    }
+
+    .input input {
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 8px;
+        background-color: #222;
+        color: white;
+    }
+
+    .btn {
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: #222;
+    }
+    </style>
+    <title>Enter Your SIM</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Enter Your SIM</h2>
+            <div class="input">
+                <input type="text" placeholder="SIM">
+            </div>
+            <a href="#" class="btn">OK</a>
+        </div>
+    </div>
+</body>
+</html>

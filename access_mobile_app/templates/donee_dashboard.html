@@ -1,0 +1,180 @@
+{# donee_dashboard.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        background-color: #222;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        background-color: #333;
+        padding: 40px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .box h2 {
+        margin-bottom: 20px;
+    }
+
+    .profile-section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-section img {
+        width: 50px;
+        height: 50px;
+        background-color: #555;
+        margin-right: 20px;
+        border-radius: 8px;
+    }
+
+    .btn {
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: #222;
+    }
+    </style>
+    <title>Donee Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Donee Dashboard</h2>
+            <div class="profile-section">
+                <img src="#" alt="Profile Picture">
+                <div>
+                    <p>Your Name</p>
+                    <p>Your Bio</p>
+                </div>
+                <a href="/edit_profile/" class="btn">Edit Profile</a>
+            </div>
+            <div class="profile-section">
+                <img src="#" alt="Sponsor Picture">
+                <div>
+                    <p>Your Sponsor</p>
+                    <p>Your Plan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{# edit_profile.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        background-color: #222;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        background-color: #333;
+        padding: 40px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .box h2 {
+        margin-bottom: 20px;
+    }
+
+    .input-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .input-section label {
+        text-align: left;
+    }
+
+    .input-section input, .input-section textarea {
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 8px;
+        background-color: #222;
+        color: white;
+    }
+
+    .btn {
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: #222;
+    }
+    </style>
+    <title>Edit Profile</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Edit Profile</h2>
+            <form action="/donee_dashboard/" method="post">
+                <div class="input-section">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Name">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" name="bio" rows="4" placeholder="Bio"></textarea>
+                </div>
+                <button type="submit" class="btn">OK</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

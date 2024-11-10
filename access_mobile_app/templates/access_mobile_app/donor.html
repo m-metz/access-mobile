@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        background-color: #222;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        background-color: #333;
+        padding: 40px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .box h2 {
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: #222;
+    }
+</style>
+    <title>Sign Up or Log In</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Sign up or log in</h2>
+            <div class="buttons">
+                <a href="/signup/" class="btn">Sign Up</a>
+                <a href="/login/" class="btn">Log in</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,91 @@
+{# sign_up.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        background-color: #222;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        background-color: #333;
+        padding: 40px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .box h2 {
+        margin-bottom: 20px;
+    }
+
+    .input-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .input-section label {
+        text-align: left;
+    }
+
+    .input-section input {
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 8px;
+        background-color: #222;
+        color: white;
+    }
+
+    .btn {
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: #222;
+    }
+    </style>
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Sign Up</h2>
+            <form action="/donee_dashboard/" method="post">
+                <div class="input-section">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="btn">OK</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
