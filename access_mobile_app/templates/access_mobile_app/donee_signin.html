@@ -2,67 +2,26 @@
 {% extends 'access_mobile_app/access_mobile.html' %}
 
 {% block content %}
-<div class="signin-page-container">
-    <div class="signin-section">
-        <h1>Donee Sign-In</h1>
-        <p>Please enter your SIM to sign in.</p>
+    <div class="row justify-content-center pt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Donee Sign-In</h1>
+                    <p class="card-text">Please enter your SIM to sign in.</p>
 
-        {% if error %}
-            <p class="error-message">{{ error }}</p>
-        {% endif %}
+                    {% if error %}
+                        <p class="text-danger">{{ error }}</p>
+                    {% endif %}
 
-        <form method="POST" class="signin-form">
-            {% csrf_token %}
-            <input type="text" name="sim" placeholder="Enter SIM" required class="signin-input">
-            <button type="submit" class="signin-button">Confirm</button>
-        </form>
+                    <form method="POST" class="signin-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="sim" placeholder="Enter SIM" required class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Confirm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-<style>
-    .signin-page-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 80vh;
-        text-align: center;
-        color: inherit;
-    }
-    .signin-section {
-        margin-bottom: 30px;
-    }
-    .signin-form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-    .signin-input {
-        padding: 10px;
-        border: 2px solid white;
-        border-radius: 8px;
-        background-color: #222;
-        color: white;
-        font-size: 16px;
-    }
-    .signin-button {
-        padding: 15px 30px;
-        background-color: #333;
-        color: white;
-        border: 2px solid white;
-        border-radius: 25px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
-        text-decoration: none;
-    }
-    .signin-button:hover {
-        background-color: white;
-        color: #333;
-    }
-    .error-message {
-        color: red;
-        margin-bottom: 15px;
-    }
-</style>
 {% endblock %}
