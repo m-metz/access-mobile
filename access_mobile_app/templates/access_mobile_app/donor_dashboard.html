@@ -3,7 +3,25 @@
 
 {% block content %}
 <h1>Donor Dashboard</h1>
-<p>Welcome to your dashboard!</p>
+
+<div style="display: grid; grid-template-columns: auto auto; gap: 10px; text-align: left;">
+    <div><strong>Name:</strong></div>
+    <div>{{ donor.name }}</div>
+    
+    <div><strong>Email:</strong></div>
+    <div>{{ donor.email }}</div>
+    
+    <div><strong>Bio:</strong></div>
+    <div>{{ donor.bio }}</div>
+    
+    <div><strong>Total Sponsorships:</strong></div>
+    <div>{{ sponsorship_count }}</div>
+</div>
+
+<br>
+
+<button onclick="window.location.href='{% url 'edit_donor_info' %}'">Edit Profile</button>
+<button onclick="window.location.href='{% url 'view_donees' %}'">View Donees</button>
+<button onclick="window.location.href='{% url 'order_sim' %}'">Order a SIM</button>
+<button onclick="window.location.href='{% url 'donate_phone' %}'">Donate a Phone</button>
 {% endblock %}
-
-
