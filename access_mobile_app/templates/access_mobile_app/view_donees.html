@@ -1,6 +1,36 @@
-<!-- view_donees.html -->
+<!-- access_mobile_app/view_donees.html -->
 {% extends 'access_mobile_app/access_mobile.html' %}
 
 {% block content %}
-<h1>tmp</h1>
+<h1>View Donees</h1>
+
+{% if donee_info %}
+    <div style="overflow-y: auto; max-height: 400px;">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <thead>
+                <tr>
+                    <th style="text-align: left; padding: 8px; background-color: #f2f2f2;">SIM</th>
+                    <th style="text-align: left; padding: 8px; background-color: #f2f2f2;">Name</th>
+                    <th style="text-align: left; padding: 8px; background-color: #f2f2f2;">Bio</th>
+                    <th style="text-align: left; padding: 8px; background-color: #f2f2f2;">Remaining Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in donee_info %}
+                <tr>
+                    <td style="padding: 8px;">{{ item.donee.sim }}</td>
+                    <td style="padding: 8px;">
+                        <a href="{% url 'donee_dashboard' sim=item.donee.sim %}">{{ item.donee.name }}</a>
+                    </td>
+                    <td style="padding: 8px;">{{ item.donee.bio|default:"No bio available" }}</td>
+                    <td style="padding: 8px;">${{ item.remaining_balance|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p>You have no donees attached yet.</p>
+{% endif %}
+
 {% endblock %}

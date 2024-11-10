@@ -4,6 +4,7 @@ from .models import DoneeAccount, Sponsorship, DonorAccount, DonorAccountManager
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.db.models import Sum
 from .forms import DoneeEditForm, DonorProfileForm
 
 # from django.shortcuts import render, redirect
@@ -118,7 +119,21 @@ def edit_donor_info(request):
 
 @login_required
 def view_donees(request):
-    return render(request, 'access_mobile_app/view_donees.html')
+    donor = request.user  # The authenticated user is a donor account
+    donees = DoneeAccount.objects.filter(sponsorship__donor_account=donor)
+
+    donee_info = []
+    for donee in donees:
+        # Calculate the remaining balance (or total sponsorship amount)
+        total_sponsorship = Sponsorship.objects.filter(donee_account=donee, donor_account=donor).aggregate(total_balance=Sum('balance'))
+        remaining_balance = total_sponsorship.get('total_balance', 0)
+
+        donee_info.append({
+            'donee': donee,
+            'remaining_balance': remaining_balance
+        })
+
+    return render(request, 'access_mobile_app/view_donees.html', {'donee_info': donee_info})
 
 @login_required
 def order_sim(request):
