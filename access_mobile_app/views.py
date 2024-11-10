@@ -15,6 +15,9 @@ def donatee_signin(request):
 def donor_signin(request):
     return render(request, 'access_mobile_app/donor_signin.html')
 
+def access_mobile(request):
+    return render(request, 'access_mobile_app/access_mobile.html')
+
 def donee(request):
     return render(request, 'access_mobile_app/donee.html')
 
@@ -29,3 +32,21 @@ def sign_up(request):
 
 def donor(request):
     return render(request, 'access_mobile_app/donor.html')
+
+def donor(request):
+    return render(request, 'access_mobile_app/factory_reset.html')
+
+def donor(request):
+    return render(request, 'access_mobile_app/factory_reset_explanation.html')
+
+def donor(request):
+    return render(request, 'access_mobile_app/pay_sim.html')
+
+def donor(request):
+    return render(request, 'access_mobile_app/register_sim.html')
+
+def donor(request):
+    return render(request, 'access_mobile_app/charity_finder.html')
+
+def donor(request):
+    return render(request, 'access_mobile_app/enter_sim.html')
