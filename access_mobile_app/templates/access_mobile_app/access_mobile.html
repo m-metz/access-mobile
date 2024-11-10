@@ -5,58 +5,212 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link href="{% static 'mdb5-free-standard/css/mdb.min.css' %}" rel="stylesheet" type="text/css"/>
-    {% comment %} <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+    
+    <!-- Google Font - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    .container {
-        text-align: center;
-        background-color: #222;
-        color: white;
-        padding: 50px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .box h2 {
-        margin-bottom: 20px;
-    }
-
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .btn {
-        text-decoration: none;
-        color: white;
-        border: 1px solid white;
-        padding: 10px 20px;
-        border-radius: 20px;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-        background-color: white;
-        color: #222;
-    }
-    </style> {% endcomment %}
     <title>{% block title %}Access Mobile{% endblock %}</title>
+
+    <!-- Add custom styles -->
+    <style>
+        /* Global Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;  /* Use Poppins for a more approachable font */
+            background-color: #f4f7fb;  /* Light background for the whole page */
+            color: #333333;  /* Default dark text for readability */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container Styling */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Main Content Wrapper */
+        .content-wrapper {
+            background: linear-gradient(135deg, #ff5e62, #ff9966); /* Vibrant Gradient */
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Heading Styles */
+        h1, h2 {
+            color: #ffffff; /* White for headings */
+            margin-bottom: 20px;
+            font-weight: 600; /* Make sure headers are bold */
+        }
+
+        /* Button Styles */
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600; /* Make sure buttons are bold */
+            border-radius: 25px;
+            color: white;
+            background-color: #ff5e62;  /* Vibrant primary button */
+            border: 2px solid #ff5e62;  /* Match button border color */
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            outline: none; /* Remove default outline */
+        }
+
+        /* Button Hover Effect */
+        .btn:hover {
+            background-color: #fff;
+            color: #ff5e62; /* Invert button colors on hover */
+            transform: translateY(-3px);
+            border: 2px solid #ff5e62; /* Ensure border matches button color */
+            box-shadow: 0 0 10px rgba(255, 94, 98, 0.4); /* Subtle glow effect */
+        }
+
+        /* Button Focus Styling (Remove Blue Outline) */
+        .btn:focus {
+            outline: 3px solid transparent; /* Remove blue outline */
+            box-shadow: 0 0 5px rgba(255, 94, 98, 0.4); /* Add custom shadow on focus */
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            padding: 12px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+            background-color: #f4f7fb; /* Light background for inputs */
+            color: #333; /* Dark text in inputs */
+        }
+
+        /* Submit Button Styling */
+        input[type="submit"] {
+            background-color: #ff5e62;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600; /* Bold submit button */
+        }
+
+        /* Submit Button Hover */
+        input[type="submit"]:hover {
+            background-color: #ff9966;
+            color: white;
+        }
+
+        /* Links Styling */
+        a {
+            text-decoration: none;
+            color: #ff5e62; /* Color links with vibrant red */
+            transition: color 0.3s ease;
+            font-weight: 600; /* Bold links */
+        }
+
+        a:hover {
+            color: #ff9966; /* Lighter red on hover */
+        }
+
+        /* Card Styling for Content Sections */
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            padding: 30px;
+        }
+
+        .card-header {
+            font-size: 20px;
+            font-weight: 600; /* Bold card headers */
+            margin-bottom: 15px;
+            color: #1E2A47;  /* Dark text for headers */
+        }
+
+        .card-body {
+            font-size: 16px;
+            color: #555;  /* Slightly lighter text for card body */
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ff5e62; /* Table headers with vibrant background */
+            color: white; /* White text on table headers */
+            font-weight: 600; /* Bold table headers */
+        }
+
+        td {
+            background-color: #f9f9f9; /* Slightly gray background for table data */
+            color: #333; /* Dark text for table content */
+        }
+
+        tr:hover td {
+            background-color: #ffedeb; /* Light red hover effect for table rows */
+        }
+
+        /* Scrollable Area for Tables */
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto; /* Make table scrollable if needed */
+        }
+
+        /* Remove Blue Outline from Focused Inputs */
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 3px rgba(255, 94, 98, 0.4); /* Custom shadow color */
+        }
+
+        /* Remove Blue Focus for Links */
+        a:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+    </style>
 </head>
 <body>
+
     <div class="container">
-        {% block content %}
-        {% endblock %}
+        <div class="content-wrapper">
+            {% block content %}
+            <!-- Content will go here -->
+            {% endblock %}
+        </div>
     </div>
+
     <script src="{% static 'mdb5-free-standard/js/mdb.umd.min.js' %}"></script>
 </body>
 </html>
+
