@@ -1,0 +1,16 @@
+<!-- landing_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+</head>
+<body>
+    <h1>Welcome to Our Donation Platform</h1>
+    <p>Our platform connects donors and donatees in a meaningful way. Please choose the appropriate option to sign in.</p>
+    
+    <button onclick="window.location.href='{% url 'donatee_signin' %}'">I am a Donatee</button>
+    <button onclick="window.location.href='{% url 'donor_signin' %}'">I am a Donor</button>
+</body>
+</html>
