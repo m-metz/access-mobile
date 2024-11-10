@@ -1,8 +1,48 @@
-<!-- donee_dashboard.html -->
+<!-- access_mobile_app/donee_dashboard.html -->
 {% extends 'access_mobile_app/access_mobile.html' %}
 
 {% block content %}
-    <h1>Welcome, {{ donee.name }}!</h1>
-    <p>Your SIM: {{ donee.sim }}</p>
-    <p>{{ donee.bio }}</p>
+<h1>Donee Dashboard</h1>
+
+<div class="donee-info">
+    <h2>Your Information</h2>
+    <table>
+        <tr>
+            <td align="left"><strong>Name:</strong></td>
+            <td align="left">{{ donee.name }}</td>
+        </tr>
+        <tr>
+            <td align="left"><strong>SIM:</strong></td>
+            <td align="left">{{ donee.sim }}</td>
+        </tr>
+        <tr>
+            <td align="left"><strong>Bio:</strong></td>
+            <td align="left">{{ donee.bio|default:"N/A" }}</td>
+        </tr>
+    </table>
+    <br>
+    <a href="{% url 'edit_donee_info' sim=donee.sim %}">Edit Info</a>
+</div>
+
+{% if donor %}
+    <div class="sponsor-info">
+        <h2>Donor Information</h2>
+        <table>
+            <tr>
+                <td align="left"><strong>Donor Name:</strong></td>
+                <td align="left">{{ donor.name }}</td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Donor Email:</strong></td>
+                <td align="left">{{ donor.email }}</td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Sponsorship Balance:</strong></td>
+                <td align="left">${{ sponsorship.balance }}</td>
+            </tr>
+        </table>
+    </div>
+{% else %}
+    <p>No donor information available.</p>
+{% endif %}
 {% endblock %}

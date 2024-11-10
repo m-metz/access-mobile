@@ -7,6 +7,7 @@ urlpatterns = [
     path('donee-signin/', views.donee_signin, name='donee_signin'),
     path('donee/', views.donee, name='donee'),
     path('donee-dashboard/<str:sim>', views.donee_dashboard, name='donee_dashboard'),
+    path('donee-dashboard/<str:sim>/edit/', views.edit_donee_info, name='edit_donee_info'),
     path('donor/', views.donor, name='donor'),
     path('donor-signin/', views.donor_signin, name='donor_signin'),
     path('edit-profile/', views.edit_profile, name='edit_profile'),

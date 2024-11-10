@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.timezone import datetime
-from .models import DoneeAccount
+from .models import DoneeAccount, Sponsorship, DonorAccount
+from .forms import DoneeEditForm
 
 # from django.shortcuts import render, redirect
 # from django.contrib.auth import login, authenticate
@@ -36,7 +37,30 @@ def donee_dashboard(request, sim):
         donee = DoneeAccount.objects.get(sim=sim)
     except DoneeAccount.DoesNotExist:
         return redirect('donatee_signin')  # Redirect back to sign-in if SIM is not found
-    return render(request, 'access_mobile_app/donee_dashboard.html', {'donee': donee})
+    
+    # Look up the donor linked through the sponsorship and fetch balance if available
+    sponsorship = Sponsorship.objects.filter(donee_account=donee).first()
+    donor = sponsorship.donor_account if sponsorship else None
+    balance = sponsorship.balance if sponsorship else None
+    
+    return render(request, 'access_mobile_app/donee_dashboard.html', {
+        'donee': donee,
+        'donor': donor,
+        'balance': balance
+    })
+
+def edit_donee_info(request, sim):
+    donee = get_object_or_404(DoneeAccount, sim=sim)
+    
+    if request.method == 'POST':
+        form = DoneeEditForm(request.POST, instance=donee)
+        if form.is_valid():
+            form.save()
+            return redirect('donee_dashboard', sim=donee.sim)
+    else:
+        form = DoneeEditForm(instance=donee)
+    
+    return render(request, 'access_mobile_app/edit_donee_info.html', {'form': form, 'donee': donee})
 
 def edit_profile(request):
     return render(request, 'access_mobile_app/edit_profile.html')
