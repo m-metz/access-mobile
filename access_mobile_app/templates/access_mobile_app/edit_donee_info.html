@@ -2,73 +2,22 @@
 {% extends 'access_mobile_app/access_mobile.html' %}
 
 {% block content %}
-<div class="edit-info-page-container">
-    <div class="edit-info-section">
-        <h1>Edit Your Information, {{ donee.name }}</h1>
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Edit Your Information, {{ donee.name }}</h1>
 
-        <form method="post" class="edit-info-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="button-section">
-                <button type="submit" class="edit-button primary">Save Changes</button>
-                <a href="{% url 'donee_dashboard' sim=donee.sim %}" class="edit-button secondary">Cancel</a>
+                    <form method="post" class="edit-info-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="button-section mt-4">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a href="{% url 'donee_dashboard' sim=donee.sim %}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<style>
-    .edit-info-page-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 40px;
-        text-align: center;
-        color: white;
-    }
-    .edit-info-section {
-        background-color: #333;
-        padding: 30px;
-        border-radius: 8px;
-        border: 2px solid white;
-        width: 100%;
-        max-width: 600px;
-    }
-    .edit-info-form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    .button-section {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
-    .edit-button {
-        padding: 15px 30px;
-        border-radius: 25px;
-        font-size: 16px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background-color 0.3s, color 0.3s;
-        border: 2px solid white;
-    }
-    .edit-button.primary {
-        background-color: #333;
-        color: white;
-    }
-    .edit-button.primary:hover {
-        background-color: white;
-        color: #333;
-    }
-    .edit-button.secondary {
-        background-color: transparent;
-        color: white;
-    }
-    .edit-button.secondary:hover {
-        background-color: white;
-        color: #333;
-    }
-</style>
 {% endblock %}

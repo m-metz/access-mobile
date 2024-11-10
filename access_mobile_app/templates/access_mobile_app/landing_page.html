@@ -2,48 +2,20 @@
 {% extends 'access_mobile_app/access_mobile.html' %}
 
 {% block content %}
-<div class="landing-page-container">
-    <div class="welcome-section">
-        <h1>Welcome to Our Donation Platform</h1>
-        <p>Our platform connects donors and donatees in a meaningful way. Please choose the appropriate option to sign in.</p>
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title">Access Mobile</h1>
+                    <p class="card-text">Bridging the Digital Divide faced by Equity Deserving Communities!</p>
+                    <br>
+                    <p class="card-text">Please choose the appropriate option to sign in or sign up!</p>
+                    <div class="button-section mt-4">
+                        <button class="btn btn-primary" onclick="window.location.href='{% url 'donee_signin' %}'">I am a Donatee</button>
+                        <button class="btn btn-outline-primary" onclick="window.location.href='{% url 'donor_signin' %}'">I am a Donor</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="button-section">
-        <button class="landing-button" onclick="window.location.href='{% url 'donee_signin' %}'">I am a Donatee</button>
-        <button class="landing-button" onclick="window.location.href='{% url 'donor_signin' %}'">I am a Donor</button>
-    </div>
-</div>
-
-<style>
-    .landing-page-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 80vh;
-        text-align: center;
-        color: inherit;
-    }
-    .welcome-section {
-        margin-bottom: 30px;
-    }
-    .button-section {
-        display: flex;
-        gap: 20px;
-    }
-    .landing-button {
-        padding: 15px 30px;
-        background-color: #333;
-        color: white;
-        border: 2px solid white;
-        border-radius: 25px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    .landing-button:hover {
-        background-color: white;
-        color: #333;
-    }
-</style>
 {% endblock %}
