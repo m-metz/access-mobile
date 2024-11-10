@@ -53,15 +53,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="box">
-            <h2>{% block heading %}Welcome to Access Mobile{% endblock %}</h2>
-            <div class="buttons">
-                {% block buttons %}
-                <a href="/donee/" class="btn">I'm a Donee</a>
-                <a href="/donor-signin/" class="btn">I want to Donate</a>
-                {% endblock %}
-            </div>
-        </div>
+        {% block content %}
+        {% endblock %}
     </div>
 </body>
 </html>
