@@ -2,13 +2,17 @@
 {% extends 'access_mobile_app/access_mobile.html' %}
 
 {% block content %}
-<h1>Donor Sign In</h1>
-<div class="row">
-    <div class="col">
-        <p>Select an option:</p>
-        <button class="btn btn-primary" onclick="window.location.href='{% url 'donor_signup' %}'">Sign Up</button>
-        <button class="btn btn-outline-primary" onclick="window.location.href='{% url 'donor_login' %}'">Log In</button>
-        <a href="/" class="btn btn-light">Back to Home</a>
+    <div class="row justify-content-center pt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                  <h1 class="card-title">Donor Sign In</h5>
+                  <p class="card-text">Select an option:</p>
+                  <button class="btn btn-primary" onclick="window.location.href='{% url 'donor_signup' %}'">Sign Up</button>
+                  <button class="btn btn-outline-primary" onclick="window.location.href='{% url 'donor_login' %}'">Log In</button>
+                  <a href="/" class="btn btn-light">Back to Home</a>
+                </div>
+              </div>
+        </div>
     </div>
-</div>
 {% endblock %}
