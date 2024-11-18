@@ -1,0 +1,2 @@
+# Database Demo Data
+If you restore these PostgreSQL demo data backups to your PostgreSQL server, you must make sure the code release version (ex. 1.0.2) matches the DB backup version (ex. amobile_1.0.2.backup.zip). This is because the Django models can change in the code and may not match the DB.
